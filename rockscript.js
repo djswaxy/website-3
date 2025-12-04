@@ -3,6 +3,19 @@ const secretinput = document.getElementById("secretinput");
 
 let saveddata = [];
 
+setInterval(() => {
+    fetch("./chatlog.json")
+        .then(response => response.json()) // Parse JSON
+        .then(data => {
+            saveddata = data;
+            document.getElementById("chatlog").innerHTML = ""; //clear all chats
+            data.forEach(entry => {
+                    logpusher(entry);
+                }
+            ) // Work with JSON data
+        })
+
+},3000)
 fetch("./chatlog.json")
     .then(response => response.json()) // Parse JSON
 
@@ -93,7 +106,7 @@ fetch("./chatlog.json")
                     const chatLog = document.getElementById("chatlog");
                     chatLog.style.backgroundColor = "black";
                     chatLog.style.color = "#00FF00"; // Grønn tekst
-                    chatLog.style.border = "1px solid #00FF00"; // Kul grønn kantlinje
+
 
                     chatinput.value = "";
                     return;
@@ -136,15 +149,16 @@ fetch("./chatlog.json")
                         alert("🧹 Chatten er tømt!");
                     }
                     else {
-                        //logpusher(newEntry); //putter i Diven så det ikke blir delay.
+                        logpusher(newEntry);
                     }
 
                 })
                 chatinput.value = "";
             }
         }
+
 // Sjekk etter nye meldinger hvert 2. sekund (2000ms)
-setInterval(() => {
+/*setInterval(() => {
     fetch("./chatlog.json")
         .then(response => response.json())
         .then(data => {
@@ -162,7 +176,59 @@ setInterval(() => {
                 saveddata = data;
             }
         });
-}, 2000);
+}, 2000); */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
