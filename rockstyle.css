@@ -78,6 +78,27 @@ ul.topnav li a {
     text-decoration-style: dashed ;
     margin-bottom: 10px;
 }
+#diktTekst {
+    color: wheat;
+}
+#diktTittel {
+    color: wheat;
+}
+#diktDynasti {
+    color: wheat;
+}
+#diktForfatter{
+    color: wheat;
+}
+.DiktDiv {
+    background-color: darkslateblue;
+}
+#DagensDigt {
+
+    color: wheat;
+    text-decoration: underline;
+    text-decoration-style: wavy ;
+}
 #tarotmeaninglink {
     display: none;
     margin-bottom: 10px;

@@ -66,6 +66,32 @@ fetch("./chatlog.json")
 
         })
 // 21 + 14 + 14 + 14 Cards = 63 kort.
+function hentDagensDikt() {
+
+    fetch("./KinesiskeDikt.json")
+        .then(response => response.json())
+        .then(alleDikt => {
+            // 1. Velg dikt basert på dato (samme logikk som sist)
+            const iDag = new Date();
+            const dagNummer = Math.floor(iDag.getTime() / (1000 * 60 * 60 * 24));
+            const diktIndeks = dagNummer % alleDikt.length;
+
+            const dagensDikt = alleDikt[diktIndeks];
+
+
+            document.getElementById("diktTittel").innerHTML = dagensDikt.title || "Uten tittel";
+            document.getElementById("diktForfatter").innerHTML = "Av: " + dagensDikt.author;
+            document.getElementById("diktDynasti").innerHTML = "(" + dagensDikt.dynasty + "-dynastiet)";
+
+            //fikser linjene
+            let formatertTekst = dagensDikt.content.split("|").join("<br>");
+
+            document.getElementById("diktTekst").innerHTML = formatertTekst;
+        })
+        .catch(error => console.error("Kunne ikke laste dikt:", error));
+}
+
+hentDagensDikt();
 function Tarot() {
     const TarotRow = document.getElementById("TarotRow");
     const TarotDataRow = document.getElementById("TarotDataRow");
